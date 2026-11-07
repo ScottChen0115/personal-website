@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>陈佳乐 · Scott Chen</title>
+  <meta name="description" content="陈佳乐（Scott Chen），香港科技大学本科生的个人主页。Personal page of Scott Chen, undergraduate at HKUST." />
+  <meta name="theme-color" content="#05070a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070a'/%3E%3Cpath d='M14 14h12v12H14zM38 14h12v12H38zM26 26h12v12H26zM14 38h12v12H14zM38 38h12v12H38z' fill='%235ee7ff'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-text" data-i18n="brand"></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about" data-i18n="nav.about"></a>
+      <a href="#experience" data-i18n="nav.experience"></a>
+      <a href="#contact" data-i18n="nav.contact"></a>
+    </nav>
+    <button class="lang-toggle" type="button" aria-label="Switch language / 切换语言">
+      <span class="lang-thumb" aria-hidden="true"></span>
+      <span class="lang-opt" data-lang="zh">中</span>
+      <span class="lang-opt" data-lang="en">EN</span>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <canvas id="ising" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <p class="eyebrow mono reveal"><span class="dot"></span><span data-i18n="hero.eyebrow"></span></p>
+        <h1 class="hero-name reveal">
+          <span class="name-primary" data-i18n="hero.name"></span>
+          <span class="name-secondary mono" data-i18n="hero.alt"></span>
+        </h1>
+        <p class="hero-lede reveal" data-i18n="hero.lede"></p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="https://github.com/ScottChen0115" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span data-i18n="hero.cta.github"></span><span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="btn btn-ghost" href="#experience"><span data-i18n="hero.cta.experience"></span></a>
+        </div>
+      </div>
+
+      <div class="hud mono" aria-hidden="true">
+        <div class="hud-title" data-i18n="hud.title"></div>
+        <div class="hud-row"><span>T</span><b id="hud-t">2.27</b></div>
+        <div class="hud-row"><span>|m|</span><b id="hud-m">0.00</b></div>
+        <div class="hud-row"><span data-i18n="hud.rate"></span><b id="hud-rate">—</b></div>
+        <input id="hud-slider" type="range" min="1.6" max="3.6" step="0.01" value="2.27" tabindex="-1" />
+        <div class="hud-hint" data-i18n="hud.hint"></div>
+      </div>
+
+      <a class="scroll-cue mono" href="#about" aria-hidden="true"><span></span>scroll</a>
+    </section>
+
+    <section id="about" class="section">
+      <header class="section-head reveal">
+        <span class="section-index mono">01</span>
+        <h2 data-i18n="about.title"></h2>
+      </header>
+      <div class="about-grid">
+        <div class="about-text reveal" id="about-text"></div>
+        <aside class="facts reveal" id="facts"></aside>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <header class="section-head reveal">
+        <span class="section-index mono">02</span>
+        <h2 data-i18n="experience.title"></h2>
+      </header>
+      <ol class="resume" id="resume"></ol>
+      <div class="awards" id="awards" hidden></div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <header class="section-head reveal">
+        <span class="section-index mono">03</span>
+        <h2 data-i18n="contact.title"></h2>
+      </header>
+      <a class="contact-card reveal" href="https://github.com/ScottChen0115" target="_blank" rel="noopener">
+        <span class="contact-label mono" data-i18n="contact.label"></span>
+        <span class="contact-handle">github.com/ScottChen0115</span>
+        <span class="contact-desc" data-i18n="contact.desc"></span>
+        <span class="contact-arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="mono">This site is a personal page and may be incomplete.</p>
+    <p class="footer-zh" data-i18n="footer.zh"></p>
+    <p class="mono footer-meta">© 2026 陈佳乐 · Scott Chen</p>
+  </footer>
+
+  <script src="assets/content.js"></script>
+  <script src="assets/main.js"></script>
+</body>
+</html>
