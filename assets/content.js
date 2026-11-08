@@ -122,11 +122,16 @@ window.SITE = {
     },
   ],
 
-  contact: [
-    { id: 'email', icon: 'mail', label: 'Email', value: 'scottchen0115@gmail.com', href: 'mailto:scottchen0115@gmail.com', copy: true },
-    { id: 'x', icon: 'x', label: 'X', value: '@ScottCheni21e', href: 'https://x.com/ScottCheni21e' },
-    { id: 'instagram', icon: 'instagram', label: 'Instagram', value: '@scottchen0115', href: 'https://www.instagram.com/scottchen0115/' },
-    { id: 'facebook', icon: 'facebook', label: 'Facebook', value: '@scottchen0115', href: 'https://www.facebook.com/scottchen0115' },
-    { id: 'github', icon: 'github', label: 'GitHub · Projects', value: '@ScottChen0115', href: 'https://github.com/ScottChen0115' },
-  ],
+  contact: {
+    work: [
+      { id: 'email', icon: 'mail', label: 'Email', value: 'scottchen0115@gmail.com', href: 'mailto:scottchen0115@gmail.com', copy: true },
+      { id: 'linkedin', icon: 'linkedin', label: 'LinkedIn', value: 'Scott Chen', href: 'https://www.linkedin.com/in/jiale-chen-59819043b/' },
+      { id: 'github', icon: 'github', label: 'GitHub · Projects', value: '@ScottChen0115', href: 'https://github.com/ScottChen0115' },
+    ],
+    social: [
+      { id: 'x', icon: 'x', label: 'X', value: '@ScottCheni21e', href: 'https://x.com/ScottCheni21e' },
+      { id: 'instagram', icon: 'instagram', label: 'Instagram', value: '@scottchen0115', href: 'https://www.instagram.com/scottchen0115/' },
+      { id: 'facebook', icon: 'facebook', label: 'Facebook', value: '@scottchen0115', href: 'https://www.facebook.com/scottchen0115' },
+    ],
+  },
 };

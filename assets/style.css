@@ -567,6 +567,88 @@ button {
 
 /* ---------- contact ---------- */
 
+.contact-group + .contact-group {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+.group-title {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px 14px 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--soft);
+  transition: background 0.3s, border-color 0.3s, transform 0.5s var(--ease);
+}
+
+.social-link:hover {
+  background: #fff;
+  border-color: #d9d9de;
+  transform: translateY(-2px);
+}
+
+.social-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink-2);
+  transition: background 0.3s, color 0.3s;
+}
+
+.social-link:hover .social-icon {
+  background: var(--ink);
+  color: #fff;
+}
+
+.social-text {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  line-height: 1.3;
+}
+
+.social-label {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.social-value {
+  overflow: hidden;
+  font-size: 17px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.social-arrow {
+  color: var(--faint);
+  transition: transform 0.4s var(--ease), color 0.3s;
+}
+
+.social-link:hover .social-arrow {
+  color: var(--ink);
+  transform: translate(2px, -2px);
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1026,6 +1108,10 @@ button {
   .contact-link {
     min-height: 168px;
     padding: 22px;
+  }
+
+  .social-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .copy-btn {
