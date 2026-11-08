@@ -6,7 +6,8 @@
   <title>陈佳乐 · Scott Chen</title>
   <meta name="description" content="陈佳乐（Scott Chen）的个人网站。Personal site of Scott Chen." />
   <meta name="theme-color" content="#ffffff" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0b0c'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0b0c'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='500' fill='white' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E" />
+  <link rel="preload" href="assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -17,10 +18,6 @@
       <a href="#hobbies" data-i18n="nav.hobbies"></a>
       <a href="#contact" data-i18n="nav.contact"></a>
     </nav>
-    <button class="nav-search" type="button" aria-label="Search">
-      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <kbd>⌘K</kbd>
-    </button>
     <button class="lang-toggle" type="button" aria-label="Switch language / 切换语言">
       <span class="lang-thumb" aria-hidden="true"></span>
       <span class="lang-opt" data-lang="zh">中</span>
@@ -38,22 +35,11 @@
           <span class="wm-line" aria-hidden="true">Scott Chen</span>
         </h1>
         <p class="wm-alt" data-i18n="hero.alt"></p>
-
-        <div class="search" role="search">
-          <div class="search-box">
-            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            <input id="search-input" type="text" autocomplete="off" spellcheck="false" data-i18n-placeholder="search.placeholder" aria-controls="search-results" aria-expanded="false" />
-            <button class="search-go" type="button" aria-label="Go">
-              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-          <ul class="search-results" id="search-results" role="listbox" hidden></ul>
-          <div class="chips">
-            <button type="button" class="chip" data-go="#experience" data-i18n="chip.experience"></button>
-            <button type="button" class="chip" data-go="#hobbies" data-i18n="chip.hobbies"></button>
-            <button type="button" class="chip" data-go="#contact" data-i18n="chip.contact"></button>
-            <a class="chip" href="https://github.com/ScottChen0115" target="_blank" rel="noopener" data-i18n="chip.github"></a>
-          </div>
+        <div class="chips">
+          <button type="button" class="chip" data-go="#experience" data-i18n="chip.experience"></button>
+          <button type="button" class="chip" data-go="#hobbies" data-i18n="chip.hobbies"></button>
+          <button type="button" class="chip" data-go="#contact" data-i18n="chip.contact"></button>
+          <a class="chip" href="https://github.com/ScottChen0115" target="_blank" rel="noopener" data-i18n="chip.github"></a>
         </div>
       </div>
 
@@ -61,10 +47,7 @@
     </section>
 
     <section id="intro" class="intro">
-      <p class="statement" id="statement"></p>
-      <a class="statement-link" href="https://github.com/ScottChen0115" target="_blank" rel="noopener">
-        <span data-i18n="statement.link"></span><span aria-hidden="true">↗</span>
-      </a>
+      <dl class="facts" id="facts"></dl>
     </section>
 
     <section id="experience" class="section">
@@ -87,7 +70,7 @@
         <h2 data-i18n="contact.title"></h2>
         <p class="section-note" data-i18n="contact.lede"></p>
       </header>
-      <ul class="contact-list" id="contact-list"></ul>
+      <ul class="contact-grid" id="contact-list"></ul>
       <a class="to-top" href="#top"><span aria-hidden="true">↑</span> <span data-i18n="label.top"></span></a>
     </section>
   </main>
@@ -98,12 +81,20 @@
       <button class="modal-close" type="button" data-close data-i18n-aria="label.close">
         <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
-      <div class="modal-media"><img id="modal-img" alt="" /></div>
-      <div class="modal-body" id="modal-body"></div>
-      <div class="modal-nav">
-        <button type="button" class="modal-step" data-step="-1" data-i18n-aria="label.prev">←</button>
-        <span class="modal-count" id="modal-count"></span>
-        <button type="button" class="modal-step" data-step="1" data-i18n-aria="label.next">→</button>
+      <div class="modal-scroll">
+        <div class="modal-content">
+          <div class="modal-media"><img id="modal-img" alt="" /></div>
+          <div class="modal-body" id="modal-body"></div>
+        </div>
+        <div class="modal-nav">
+          <button type="button" class="modal-step" data-step="-1" data-i18n-aria="label.prev">
+            <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="modal-count" id="modal-count"></span>
+          <button type="button" class="modal-step" data-step="1" data-i18n-aria="label.next">
+            <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
       </div>
     </article>
   </div>
