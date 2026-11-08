@@ -124,6 +124,7 @@ window.SITE = {
 
   contact: [
     { id: 'email', icon: 'mail', label: 'Email', value: 'scottchen0115@gmail.com', href: 'mailto:scottchen0115@gmail.com', copy: true },
+    { id: 'x', icon: 'x', label: 'X', value: '@ScottChen21e', href: 'https://x.com/ScottChen21e' },
     { id: 'instagram', icon: 'instagram', label: 'Instagram', value: '@scottchen0115', href: 'https://www.instagram.com/scottchen0115/' },
     { id: 'facebook', icon: 'facebook', label: 'Facebook', value: '@scottchen0115', href: 'https://www.facebook.com/scottchen0115' },
     { id: 'github', icon: 'github', label: 'GitHub · Projects', value: '@ScottChen0115', href: 'https://github.com/ScottChen0115' },

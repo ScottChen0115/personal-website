@@ -12,6 +12,7 @@
     `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
   const ICONS = {
     mail: '<rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/>',
+    x: '<path d="M4 4h4l12 16h-4zM19.5 4l-6.4 7.3M10.9 12.7L4.5 20"/>',
     instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
     facebook: '<path d="M17 3h-2.5A4.5 4.5 0 0 0 10 7.5V10H7.5v3.5H10V21h3.5v-7.5H16l.5-3.5h-3V8a1 1 0 0 1 1-1H17z"/>',
     github:

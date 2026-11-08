@@ -580,6 +580,10 @@ button {
   position: relative;
 }
 
+.contact-card:first-child {
+  grid-column: 1 / -1;
+}
+
 .contact-link {
   display: grid;
   grid-template-columns: auto 1fr auto;
