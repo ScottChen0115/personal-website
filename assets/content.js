@@ -1,103 +1,231 @@
 /*
- * All page copy lives here. Every field is { zh, en }.
- * Keep wording consistent with scott-website-brief.md: verified facts only,
- * no inflated attribution, statuses stated as they are.
+ * All page copy lives here. Every text field is { zh, en }.
+ * Facts follow scott-website-brief.md, Scott's own updates, the BUILD ACROSS
+ * certificate, and the official Future Science Prize site (futureprize-hk.org).
  */
 window.SITE = {
-  config: {
-    // Physics competition awards come from self-reported materials; off until Scott confirms.
-    showAwards: false,
-  },
-
   ui: {
-    brand: { zh: '陈佳乐', en: 'Scott Chen' },
     title: { zh: '陈佳乐 · Scott Chen', en: 'Scott Chen · 陈佳乐' },
-
-    'nav.about': { zh: '关于', en: 'About' },
     'nav.experience': { zh: '经历', en: 'Experience' },
+    'nav.hobbies': { zh: '爱好', en: 'Hobbies' },
     'nav.contact': { zh: '联系', en: 'Contact' },
 
-    'hero.eyebrow': { zh: '香港科技大学 · 本科生 · 香港', en: 'HKUST · Undergraduate · Hong Kong' },
-    'hero.name': { zh: '陈佳乐', en: 'Scott Chen' },
-    'hero.alt': { zh: 'Scott Chen', en: '陈佳乐 · Chen Jiale' },
-    'hero.lede': {
-      zh: '香港科技大学本科生。课余做一些可以公开的编程项目，也参加科学志愿服务和校园社团。',
-      en: 'Undergraduate at HKUST. Outside class I build coding projects I can share publicly, volunteer at science events and serve on campus club committees.',
+    'hero.alt': { zh: '陈佳乐', en: '陈佳乐 · Chen Jiale' },
+    'search.placeholder': { zh: '搜索经历、爱好或联系方式…', en: 'Search experience, hobbies, contact…' },
+    'search.empty': { zh: '没有找到相关内容', en: 'Nothing matches that' },
+    'search.hint': { zh: '回车打开', en: 'Enter to open' },
+    'chip.experience': { zh: '经历', en: 'Experience' },
+    'chip.hobbies': { zh: '古琴与网球', en: 'Guqin & tennis' },
+    'chip.contact': { zh: '联系我', en: 'Say hi' },
+    'chip.github': { zh: 'GitHub 项目', en: 'GitHub projects' },
+
+    statement: {
+      zh: '香港科技大学本科生。喜欢物理和代码，课余弹古琴、打网球。',
+      en: 'Undergraduate at HKUST. Into physics and code — off the clock, guqin and tennis.',
     },
-    'hero.cta.github': { zh: 'GitHub 上的项目', en: 'Projects on GitHub' },
-    'hero.cta.experience': { zh: '经历', en: 'Experience' },
+    'statement.link': { zh: '项目都在 GitHub', en: 'Projects live on GitHub' },
 
-    'hud.title': { zh: '二维 Ising · Metropolis', en: '2D Ising · Metropolis' },
-    'hud.rate': { zh: '尝试/秒', en: 'flips/s' },
-    'hud.hint': { zh: '拖动调节温度 · 移动鼠标扰动晶格', en: 'Drag to set temperature · move to perturb' },
-
-    'about.title': { zh: '关于', en: 'About' },
     'experience.title': { zh: '经历', en: 'Experience' },
-    'awards.title': { zh: '奖项', en: 'Awards' },
-    'awards.note': {
-      zh: '来源为本人材料，未附奖状复核。',
-      en: 'From self-reported materials; certificates not attached.',
-    },
-    'contact.title': { zh: '项目与联系', en: 'Projects & Contact' },
-    'contact.label': { zh: '项目代码 · 目前唯一的公开主页', en: 'Code · the one public profile, for now' },
-    'contact.desc': {
-      zh: '个人项目都在这里，可以从这里开始了解我在做什么。',
-      en: 'All my personal projects live here — the best place to see what I’m working on.',
-    },
-    'footer.zh': { zh: '本网页为个人主页，内容可能不完整。', en: '' },
-  },
+    'experience.hint': { zh: '点击卡片查看详情', en: 'Tap a card for details' },
+    'hobbies.title': { zh: '爱好', en: 'Hobbies' },
+    'contact.title': { zh: '联系', en: 'Contact' },
+    'contact.lede': { zh: '欢迎打个招呼。', en: 'Always happy to hear from you.' },
 
-  about: {
-    paragraphs: [
-      {
-        zh: '我是陈佳乐（Scott Chen），香港科技大学本科生。',
-        en: 'I’m Scott Chen (陈佳乐), an undergraduate at HKUST.',
-      },
-      {
-        zh: '高中阶段主要准备物理竞赛；现在课余用编程和 AI 辅助工具做自己感兴趣的项目，比如跨设备的物理模拟、提示词质量工具，也参与科学志愿和校园社团。',
-        en: 'In high school I mostly prepared for physics olympiads. Now I use code and AI-assisted tools on projects I find interesting — cross-device physics simulation, prompt-quality tools — and take part in science volunteering and campus clubs.',
-      },
-    ],
-    facts: [
-      { k: { zh: '中文名', en: 'Chinese name' }, v: { zh: '陈佳乐 · Chen Jiale', en: '陈佳乐 · Chen Jiale' } },
-      { k: { zh: '学校', en: 'School' }, v: { zh: '香港科技大学 · 本科', en: 'HKUST · Undergraduate' } },
-      { k: { zh: '入学', en: 'Since' }, v: { zh: '2026 年秋季', en: 'Fall 2026' } },
-      { k: { zh: '所在地', en: 'Based in' }, v: { zh: '香港', en: 'Hong Kong' } },
-      { k: { zh: '兴趣', en: 'Interests' }, v: { zh: '古琴 · 网球 · 乒乓球 · 长跑', en: 'Guqin · Tennis · Table tennis · Running' } },
-    ],
+    'label.email': { zh: '邮箱', en: 'Email' },
+    'label.copy': { zh: '复制', en: 'Copy' },
+    'label.copied': { zh: '已复制邮箱', en: 'Email copied' },
+    'label.close': { zh: '关闭', en: 'Close' },
+    'label.prev': { zh: '上一条', en: 'Previous' },
+    'label.next': { zh: '下一条', en: 'Next' },
+    'label.top': { zh: '回到顶部', en: 'Back to top' },
+    'label.githubNote': { zh: '个人项目', en: 'Personal projects' },
+    'kind.experience': { zh: '经历', en: 'Experience' },
+    'kind.hobby': { zh: '爱好', en: 'Hobby' },
+    'kind.contact': { zh: '联系', en: 'Contact' },
   },
 
   experience: [
     {
-      when: { zh: '2026.10', en: 'Oct 2026' },
-      title: { zh: 'Hong Kong AI Summit 2026 · BUILD ACROSS 黑客松', en: 'Hong Kong AI Summit 2026 · BUILD ACROSS Hackathon' },
-      role: { zh: '参赛者（团队）· 获参赛证书', en: 'Participant (team) · Certificate of Participation' },
-    },
-    {
-      when: { zh: '2026', en: '2026' },
+      id: 'future-science-prize',
+      image: 'assets/img/exp-future-science.jpg',
+      when: { zh: '2026.11.06 · 11.08', en: '6 & 8 Nov 2026' },
       title: { zh: '2026 未来科学大奖周', en: '2026 Future Science Prize Week' },
-      role: { zh: '志愿者（已报名并参加培训）', en: 'Volunteer (registered and attended training)' },
-    },
-    {
-      when: { zh: '2026.09 —', en: 'Sep 2026 —' },
-      title: { zh: '香港科技大学内地学生学者联谊会（MSSS）第 34 届', en: 'HKUST Mainland Students and Scholars Society (MSSS), 34th term' },
-      role: { zh: '创业俱乐部执委 · 网球俱乐部执委', en: 'Executive Committee, Entrepreneurship Club & Tennis Club' },
-    },
-    {
-      when: { zh: '2026.08', en: 'Aug 2026' },
-      title: { zh: '哈尔滨工业大学（深圳）计算机科学与技术学院', en: 'School of Computer Science and Technology, HIT (Shenzhen)' },
-      role: { zh: '研学访问', en: 'Research visit' },
-    },
-    {
-      when: { zh: '高中', en: 'High school' },
-      title: { zh: '长沙市红十字会', en: 'Changsha Red Cross' },
       role: { zh: '志愿者', en: 'Volunteer' },
+      meta: [
+        { k: { zh: '地点', en: 'Where' }, v: { zh: '香港', en: 'Hong Kong' } },
+        {
+          k: { zh: '联合主办', en: 'Co-organisers' },
+          v: {
+            zh: '香港未来科学大奖基金会、香港科学院',
+            en: 'Future Science Prize Foundation (Hong Kong), The Hong Kong Academy of Sciences',
+          },
+        },
+      ],
+      listTitle: { zh: '负责场次', en: 'Assigned sessions' },
+      points: [
+        {
+          zh: '11 月 6 日 · 科技论坛「人机共生时代：AI 的边界与人类的选择」，香港科技大学曾肇添演讲厅',
+          en: '6 Nov · Science and Technology Forum “Human-Machine Symbiosis Era: Boundaries of AI and Human Choices”, Tsang Shiu Tim Lecture Hall, HKUST',
+        },
+        {
+          zh: '11 月 8 日上午 · 2026 未来科学大奖获奖者与青少年对话，香港科学馆',
+          en: '8 Nov, morning · 2026 Future Science Prize Laureates’ Dialogue with the Youth, Hong Kong Science Museum',
+        },
+        {
+          zh: '11 月 8 日下午 · 2026 未来科学大奖颁奖典礼与音乐会，东九文化中心',
+          en: '8 Nov, afternoon · 2026 Future Science Prize Awards Ceremony and Concert, East Kowloon Cultural Centre',
+        },
+      ],
+      links: [
+        {
+          label: { zh: '大奖周官网', en: 'Official Prize Week site' },
+          href: {
+            zh: 'https://www.futureprize-hk.org/cn-2026futurescienceprizeweek',
+            en: 'https://www.futureprize-hk.org/en/2026futurescienceprizeweek',
+          },
+        },
+      ],
+      keywords: 'future science prize 未来科学大奖 志愿 volunteer forum 论坛 youth 青少年 ceremony 颁奖 典礼',
+    },
+    {
+      id: 'build-across',
+      image: 'assets/img/exp-hackathon.jpg',
+      when: { zh: '2026.10.03 – 10.04', en: '3–4 Oct 2026' },
+      title: { zh: 'Hong Kong AI Summit 2026 · BUILD ACROSS 黑客松', en: 'Hong Kong AI Summit 2026 · BUILD ACROSS Hackathon' },
+      role: { zh: '参赛者（团队）', en: 'Participant (team)' },
+      meta: [
+        { k: { zh: '地点', en: 'Where' }, v: { zh: 'HKUST Business School Central，金钟', en: 'HKUST Business School Central, Admiralty' } },
+        { k: { zh: '赛道', en: 'Track' }, v: { zh: 'Startup – Build Your Own Idea', en: 'Startup – Build Your Own Idea' } },
+        {
+          k: { zh: '主办', en: 'Organisers' },
+          v: {
+            zh: 'Erasmus AI Society、Maastricht AI Network 与 HKUST MBA Program',
+            en: 'Erasmus AI Society, Maastricht AI Network and the HKUST MBA Program',
+          },
+        },
+      ],
+      listTitle: { zh: '要点', en: 'Highlights' },
+      points: [
+        {
+          zh: '为期两天的黑客松，围绕金融、城市化与创业三个方向。',
+          en: 'A two-day hackathon around finance, urbanization and entrepreneurship.',
+        },
+        {
+          zh: '参与团队项目，提交了场景资源与气动数据说明文档。',
+          en: 'Worked on a team project and contributed documentation for scene assets and aerodynamic data.',
+        },
+        { zh: '获颁 Certificate of Participation。', en: 'Received a Certificate of Participation.' },
+      ],
+      links: [
+        {
+          label: { zh: '团队项目仓库', en: 'Team repository' },
+          href: 'https://github.com/sakurakuso/drone-learning-platform',
+        },
+      ],
+      keywords: 'hackathon 黑客松 ai summit build across startup drone 无人机 hkust',
+    },
+    {
+      id: 'msss',
+      image: 'assets/img/exp-msss.jpg',
+      when: { zh: '2026.09 – 2027.06', en: 'Sep 2026 – Jun 2027' },
+      title: { zh: '港科大内地学生学者联谊会 · 第 34 届', en: 'HKUST MSSS · 34th term' },
+      role: { zh: '创业俱乐部执委 · 网球俱乐部执委', en: 'Executive Committee · Entrepreneurship & Tennis Clubs' },
+      meta: [
+        {
+          k: { zh: '组织', en: 'Organisation' },
+          v: { zh: '香港科技大学内地学生学者联谊会（MSSS）', en: 'HKUST Mainland Students and Scholars Society (MSSS)' },
+        },
+        { k: { zh: '任期', en: 'Term' }, v: { zh: '2026 年 9 月 – 2027 年 6 月', en: 'Sep 2026 – Jun 2027' } },
+      ],
+      listTitle: { zh: '做些什么', en: 'What I do' },
+      points: [
+        { zh: '组织联谊比赛和培训。', en: 'Organise friendly matches and training sessions.' },
+        {
+          zh: '负责场地协调、人员统筹，以及与学校部门沟通。',
+          en: 'Handle venue coordination, staffing and communication with university offices.',
+        },
+      ],
+      links: [],
+      keywords: 'msss 执委 executive club 俱乐部 创业 entrepreneurship tennis 网球 社团',
+    },
+    {
+      id: 'hit-shenzhen',
+      image: 'assets/img/exp-research.jpg',
+      when: { zh: '2026.08', en: 'Aug 2026' },
+      title: { zh: '哈尔滨工业大学（深圳）研学访问', en: 'Research visit · HIT (Shenzhen)' },
+      role: { zh: '计算机科学与技术学院', en: 'School of Computer Science and Technology' },
+      meta: [
+        {
+          k: { zh: '学校', en: 'University' },
+          v: { zh: '哈尔滨工业大学（深圳）', en: 'Harbin Institute of Technology, Shenzhen' },
+        },
+      ],
+      listTitle: { zh: '要点', en: 'Highlights' },
+      points: [
+        {
+          zh: '与李晶教授及博士生团队交流，进入课题组实验室。',
+          en: 'Exchanged ideas with Prof. Li Jing and the doctoral team, and spent time in the group’s lab.',
+        },
+        {
+          zh: '借助 AI 工具完成个人网页的设计与搭建。',
+          en: 'Designed and built a personal web page with AI tools.',
+        },
+        {
+          zh: '完成物理模型的程序模拟与成果展示。',
+          en: 'Simulated a physics model in code and presented the results.',
+        },
+      ],
+      links: [],
+      keywords: 'hit 哈工大 深圳 shenzhen research 研学 lab 实验室 physics 物理 simulation 模拟',
     },
   ],
 
-  awards: [
-    { when: '2025', title: { zh: '第 42 届全国中学生物理竞赛（湖南赛区）一等奖', en: 'First Prize, 42nd Chinese Physics Olympiad (Hunan)' } },
-    { when: '2025', title: { zh: '第 21 届泛珠三角物理奥林匹克 · 物理综合试一等奖', en: 'First Prize, 21st Pan Pearl River Delta Physics Olympiad' } },
-    { when: '2024', title: { zh: '第 41 届全国中学生物理竞赛（湖南赛区）一等奖', en: 'First Prize, 41st Chinese Physics Olympiad (Hunan)' } },
+  hobbies: [
+    {
+      id: 'guqin',
+      image: 'assets/img/hobby-guqin.jpg',
+      name: { zh: '古琴', en: 'Guqin' },
+      desc: { zh: '2020 年开始学琴。', en: 'Playing the seven-string zither since 2020.' },
+      keywords: 'guqin 古琴 music 音乐 zither',
+    },
+    {
+      id: 'tennis',
+      image: 'assets/img/hobby-tennis.jpg',
+      name: { zh: '网球', en: 'Tennis' },
+      desc: { zh: '也在 MSSS 网球俱乐部做执委。', en: 'Also on the MSSS Tennis Club committee.' },
+      keywords: 'tennis 网球 sport 运动',
+    },
+  ],
+
+  contact: [
+    {
+      id: 'email',
+      label: { zh: '邮箱', en: 'Email' },
+      value: 'scottchen0115@gmail.com',
+      href: 'mailto:scottchen0115@gmail.com',
+      copy: true,
+      keywords: 'email 邮箱 mail gmail',
+    },
+    {
+      id: 'instagram',
+      label: { zh: 'Instagram', en: 'Instagram' },
+      value: '@scottchen0115',
+      href: 'https://www.instagram.com/scottchen0115/',
+      keywords: 'instagram ig ins',
+    },
+    {
+      id: 'facebook',
+      label: { zh: 'Facebook', en: 'Facebook' },
+      value: '@scottchen0115',
+      href: 'https://www.facebook.com/scottchen0115',
+      keywords: 'facebook fb',
+    },
+    {
+      id: 'github',
+      label: { zh: 'GitHub · 个人项目', en: 'GitHub · projects' },
+      value: '@ScottChen0115',
+      href: 'https://github.com/ScottChen0115',
+      keywords: 'github code 代码 项目 projects',
+    },
   ],
 };
