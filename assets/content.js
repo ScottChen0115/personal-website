@@ -2,14 +2,45 @@
  * All page copy lives here.
  * Facts follow scott-website-brief.md, Scott's own updates, the BUILD ACROSS
  * certificate, and the official Future Science Prize site (futureprize-hk.org).
+ * Physics awards are checked against the official lists on cpho.pku.edu.cn
+ * (Chinese Physical Society) and panpearl-phys.hkust.edu.hk.
  */
 window.SITE = {
   facts: [
     { k: 'School', v: 'HKUST · Undergraduate' },
-    { k: 'Into', v: 'Physics · Code' },
+    {
+      k: 'Into',
+      items: [
+        { label: 'Physics', open: 'physics' },
+        { label: 'Computer Science', open: 'cs' },
+      ],
+    },
     { k: 'Off hours', v: 'Guqin · Tennis' },
-    { k: 'Projects', v: 'GitHub', href: 'https://github.com/ScottChen0115' },
+    { k: 'Projects', items: [{ label: 'GitHub', href: 'https://github.com/ScottChen0115' }] },
   ],
+
+  details: {
+    physics: {
+      role: 'Physics Olympiad',
+      when: '2024 – 2025',
+      title: 'Physics',
+      meta: [],
+      listTitle: 'Awards',
+      sessions: [
+        { when: '2025', name: '42nd Chinese Physics Olympiad (CPhO)', where: 'Provincial First Prize · Hunan' },
+        { when: '2025', name: '21st Pan Pearl River Delta Physics Olympiad', where: 'First Prize · Comprehensive Test' },
+        { when: '2024', name: '41st Chinese Physics Olympiad (CPhO)', where: 'Provincial First Prize · Hunan' },
+      ],
+    },
+    cs: {
+      role: 'Programming',
+      title: 'Computer Science',
+      meta: [
+        { k: 'Language', v: 'Python' },
+        { k: 'Projects', v: 'github.com/ScottChen0115', href: 'https://github.com/ScottChen0115' },
+      ],
+    },
+  },
 
   experience: [
     {

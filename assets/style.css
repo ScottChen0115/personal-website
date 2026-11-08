@@ -369,15 +369,21 @@ button {
   transform: none;
 }
 
-.fact a {
+.fact-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.25em;
+  gap: 0.22em;
+  padding: 0;
+  border: 0;
   background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
   transition: background-size 0.5s var(--ease);
 }
 
-.fact a:hover {
+.fact-link:hover {
   background-size: 100% 1px;
 }
 
@@ -391,7 +397,7 @@ button {
   height: 0.55em;
 }
 
-.fact a:hover .fact-arrow {
+.fact-link:hover .fact-arrow {
   transform: translate(0.08em, -0.08em);
 }
 
@@ -766,6 +772,20 @@ button {
   color: #fff;
 }
 
+.modal-media[hidden],
+.modal.solo .modal-nav {
+  display: none;
+}
+
+.modal.solo .modal-panel {
+  width: min(100%, 640px);
+}
+
+.modal.solo .modal-body {
+  padding-top: 36px;
+  padding-bottom: 28px;
+}
+
 .modal-media {
   aspect-ratio: 16 / 8;
   overflow: hidden;
@@ -841,6 +861,15 @@ button {
 
 .modal-meta dd {
   margin: 0;
+}
+
+.modal-meta a {
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.2s;
+}
+
+.modal-meta a:hover {
+  border-color: var(--ink);
 }
 
 .modal-list-title {

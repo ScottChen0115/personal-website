@@ -21,18 +21,22 @@
 
   /* ---------------- rendering ---------------- */
 
+  function factItem(it) {
+    const inner = `${esc(it.label)}<span class="fact-arrow">${svg(ICONS.arrow, 28)}</span>`;
+    return it.href
+      ? `<a class="fact-link" href="${it.href}" target="_blank" rel="noopener">${inner}</a>`
+      : `<button type="button" class="fact-link" data-open="${it.open}">${inner}</button>`;
+  }
+
   function renderFacts() {
     $('#facts').innerHTML = SITE.facts
       .map((f) => {
-        const value = f.href
-          ? `<a href="${f.href}" target="_blank" rel="noopener">${esc(f.v)}<span class="fact-arrow">${svg(ICONS.arrow, 28)}</span></a>`
-          : f.v
-              .split(' · ')
-              .map((seg) => `<span class="seg">${esc(seg)}</span>`)
-              .join(' · ');
+        const segs = f.items ? f.items.map(factItem) : f.v.split(' · ').map(esc);
+        const value = segs.map((s) => `<span class="seg">${s}</span>`).join(' · ');
         return `<div class="fact"><dt>${esc(f.k)}</dt><dd>${value}</dd></div>`;
       })
       .join('');
+    $$('.fact-link[data-open]').forEach((btn) => btn.addEventListener('click', () => openDetail(btn.dataset.open)));
   }
 
   function renderExperience() {
@@ -131,13 +135,20 @@
   const panel = $('.modal-panel', modal);
   const scroller = $('.modal-scroll', modal);
   const content = $('.modal-content', modal);
+  const media = $('.modal-media', modal);
+  let modalOpen = false;
   let modalIndex = null;
   let lastFocus = null;
 
-  function fillModal(i) {
-    const e = SITE.experience[i];
-    $('#modal-img').src = e.image;
-    const meta = e.meta.map((m) => `<div><dt>${esc(m.k)}</dt><dd>${esc(m.v)}</dd></div>`).join('');
+  function renderEntry(e) {
+    media.hidden = !e.image;
+    if (e.image) $('#modal-img').src = e.image;
+    const meta = e.meta
+      .map((m) => {
+        const v = m.href ? `<a href="${m.href}" target="_blank" rel="noopener">${esc(m.v)} ↗</a>` : esc(m.v);
+        return `<div><dt>${esc(m.k)}</dt><dd>${v}</dd></div>`;
+      })
+      .join('');
     const sessions = (e.sessions || [])
       .map(
         (s) => `
@@ -149,17 +160,21 @@
       )
       .join('');
     $('#modal-body').innerHTML = `
-      <div class="modal-kicker"><span class="pill dark">${esc(e.role)}</span><span class="pill">${esc(e.when)}</span></div>
+      <div class="modal-kicker"><span class="pill dark">${esc(e.role)}</span>${e.when ? `<span class="pill">${esc(e.when)}</span>` : ''}</div>
       <h3 id="modal-title">${esc(e.title)}</h3>
-      <dl class="modal-meta">${meta}</dl>
+      ${meta ? `<dl class="modal-meta">${meta}</dl>` : ''}
       ${sessions ? `<p class="modal-list-title">${esc(e.listTitle)}</p><ol class="modal-sessions">${sessions}</ol>` : ''}`;
+  }
+
+  function fillModal(i) {
+    renderEntry(SITE.experience[i]);
     $('#modal-count').textContent = `${String(i + 1).padStart(2, '0')} / ${String(SITE.experience.length).padStart(2, '0')}`;
   }
 
-  function openModal(i) {
+  function showModal() {
     lastFocus = document.activeElement;
-    modalIndex = i;
-    fillModal(i);
+    modalOpen = true;
+    modal.classList.toggle('solo', modalIndex === null);
     modal.hidden = false;
     document.body.classList.add('locked');
     scroller.scrollTop = 0;
@@ -169,13 +184,26 @@
     });
   }
 
+  function openModal(i) {
+    modalIndex = i;
+    fillModal(i);
+    showModal();
+  }
+
+  function openDetail(key) {
+    modalIndex = null;
+    renderEntry(SITE.details[key]);
+    showModal();
+  }
+
   function closeModal() {
-    if (modalIndex === null) return;
+    if (!modalOpen) return;
     modal.classList.remove('open');
+    modalOpen = false;
     modalIndex = null;
     document.body.classList.remove('locked');
     setTimeout(() => {
-      if (modalIndex === null) modal.hidden = true;
+      if (!modalOpen) modal.hidden = true;
     }, reduceMotion ? 0 : 450);
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
@@ -202,7 +230,7 @@
   });
 
   document.addEventListener('keydown', (e) => {
-    if (modalIndex === null) return;
+    if (!modalOpen) return;
     if (e.key === 'Escape') closeModal();
     else if (e.key === 'ArrowRight') stepModal(1);
     else if (e.key === 'ArrowLeft') stepModal(-1);
