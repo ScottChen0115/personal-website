@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>陈佳乐 · Scott Chen</title>
-  <meta name="description" content="陈佳乐（Scott Chen）的个人网站。Personal site of Scott Chen." />
+  <title>Scott Chen · 陈佳乐</title>
+  <meta name="description" content="Personal site of Scott Chen (陈佳乐)." />
   <meta name="theme-color" content="#ffffff" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0b0c'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='500' fill='white' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E" />
   <link rel="preload" href="assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
@@ -14,15 +14,10 @@
   <header class="nav">
     <a class="brand" href="#top" aria-label="Scott Chen — top">SC</a>
     <nav class="nav-links">
-      <a href="#experience" data-i18n="nav.experience"></a>
-      <a href="#hobbies" data-i18n="nav.hobbies"></a>
-      <a href="#contact" data-i18n="nav.contact"></a>
+      <a href="#experience">Experience</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <button class="lang-toggle" type="button" aria-label="Switch language / 切换语言">
-      <span class="lang-thumb" aria-hidden="true"></span>
-      <span class="lang-opt" data-lang="zh">中</span>
-      <span class="lang-opt" data-lang="en">EN</span>
-    </button>
   </header>
 
   <main id="top">
@@ -34,12 +29,12 @@
         <h1 class="wordmark" aria-label="Scott Chen 陈佳乐">
           <span class="wm-line" aria-hidden="true">Scott Chen</span>
         </h1>
-        <p class="wm-alt" data-i18n="hero.alt"></p>
+        <p class="wm-alt" lang="zh-CN">陈佳乐 · <span lang="en">Chen Jiale</span></p>
         <div class="chips">
-          <button type="button" class="chip" data-go="#experience" data-i18n="chip.experience"></button>
-          <button type="button" class="chip" data-go="#hobbies" data-i18n="chip.hobbies"></button>
-          <button type="button" class="chip" data-go="#contact" data-i18n="chip.contact"></button>
-          <a class="chip" href="https://github.com/ScottChen0115" target="_blank" rel="noopener" data-i18n="chip.github"></a>
+          <button type="button" class="chip" data-go="#experience">Experience</button>
+          <button type="button" class="chip" data-go="#hobbies">Guqin &amp; tennis</button>
+          <button type="button" class="chip" data-go="#contact">Say hi</button>
+          <a class="chip" href="https://github.com/ScottChen0115" target="_blank" rel="noopener">GitHub projects</a>
         </div>
       </div>
 
@@ -52,33 +47,33 @@
 
     <section id="experience" class="section">
       <header class="section-head reveal">
-        <h2 data-i18n="experience.title"></h2>
-        <p class="section-note" data-i18n="experience.hint"></p>
+        <h2>Experience</h2>
+        <p class="section-note">Tap a card for details</p>
       </header>
       <div class="exp-grid" id="exp-grid"></div>
     </section>
 
     <section id="hobbies" class="section">
       <header class="section-head reveal">
-        <h2 data-i18n="hobbies.title"></h2>
+        <h2>Hobbies</h2>
       </header>
       <div class="hobby-grid" id="hobby-grid"></div>
     </section>
 
     <section id="contact" class="section contact">
       <header class="section-head reveal">
-        <h2 data-i18n="contact.title"></h2>
-        <p class="section-note" data-i18n="contact.lede"></p>
+        <h2>Contact</h2>
+        <p class="section-note">Always happy to hear from you.</p>
       </header>
       <ul class="contact-grid" id="contact-list"></ul>
-      <a class="to-top" href="#top"><span aria-hidden="true">↑</span> <span data-i18n="label.top"></span></a>
+      <a class="to-top" href="#top"><span aria-hidden="true">↑</span> <span>Back to top</span></a>
     </section>
   </main>
 
   <div class="modal" id="modal" hidden>
     <div class="modal-backdrop" data-close></div>
     <article class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
-      <button class="modal-close" type="button" data-close data-i18n-aria="label.close">
+      <button class="modal-close" type="button" data-close aria-label="Close">
         <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
       <div class="modal-scroll">
@@ -87,11 +82,11 @@
           <div class="modal-body" id="modal-body"></div>
         </div>
         <div class="modal-nav">
-          <button type="button" class="modal-step" data-step="-1" data-i18n-aria="label.prev">
+          <button type="button" class="modal-step" data-step="-1" aria-label="Previous">
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <span class="modal-count" id="modal-count"></span>
-          <button type="button" class="modal-step" data-step="1" data-i18n-aria="label.next">
+          <button type="button" class="modal-step" data-step="1" aria-label="Next">
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>

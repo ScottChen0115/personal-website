@@ -121,63 +121,6 @@ button {
   background: var(--soft);
 }
 
-.lang-toggle {
-  margin-left: 6px;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 3px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.lang-opt {
-  position: relative;
-  z-index: 1;
-  min-width: 38px;
-  padding: 5px 8px;
-  text-align: center;
-  line-height: 1;
-  transition: color 0.3s var(--ease);
-}
-
-.lang-thumb {
-  position: absolute;
-  top: 3px;
-  bottom: 3px;
-  left: 3px;
-  width: calc(50% - 3px);
-  border-radius: 999px;
-  background: var(--ink);
-  transition: transform 0.45s var(--ease);
-}
-
-html[data-lang="en"] .lang-thumb {
-  transform: translateX(100%);
-}
-
-html[data-lang="zh"] .lang-opt[data-lang="zh"],
-html[data-lang="en"] .lang-opt[data-lang="en"] {
-  color: #fff;
-}
-
-/* ---------- language switch ---------- */
-
-main {
-  transition: opacity 0.22s ease, filter 0.22s ease;
-}
-
-body.lang-switching main {
-  opacity: 0;
-  filter: blur(6px);
-}
-
 /* ---------- hero ---------- */
 
 .hero {
@@ -413,10 +356,6 @@ body.lang-switching main {
   transition: color 0.7s var(--ease), transform 0.9s var(--ease);
 }
 
-html[lang="zh-CN"] .fact dd {
-  letter-spacing: 0.02em;
-}
-
 .fact .seg {
   white-space: nowrap;
 }
@@ -480,11 +419,6 @@ html[lang="zh-CN"] .fact dd {
   font-weight: 450;
   line-height: 1;
   letter-spacing: -0.035em;
-}
-
-html[lang="zh-CN"] .section-head h2 {
-  font-weight: 500;
-  letter-spacing: 0;
 }
 
 .section-note {
@@ -617,11 +551,6 @@ html[lang="zh-CN"] .section-head h2 {
   font-size: clamp(26px, 2.4vw, 32px);
   font-weight: 450;
   letter-spacing: -0.02em;
-}
-
-html[lang="zh-CN"] .hobby h3 {
-  font-weight: 500;
-  letter-spacing: 0.02em;
 }
 
 .hobby p {

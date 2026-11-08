@@ -2,7 +2,6 @@
   'use strict';
 
   const SITE = window.SITE;
-  const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const $ = (sel, el = document) => el.querySelector(sel);
@@ -20,69 +19,18 @@
     arrow: '<path d="M7 17L17 7M8 7h9v9"/>',
   };
 
-  /* ---------------- language ---------------- */
-
-  const LANG_KEY = 'scottchen-lang';
-  let lang = (() => {
-    try {
-      const saved = localStorage.getItem(LANG_KEY);
-      if (saved === 'zh' || saved === 'en') return saved;
-    } catch (_) {}
-    return (navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
-  })();
-
-  const t = (v) => (v && typeof v === 'object' ? (v[lang] ?? v.en ?? '') : v ?? '');
-  const ui = (key) => t(SITE.ui[key]);
-
-  function applyLang() {
-    root.lang = lang === 'zh' ? 'zh-CN' : 'en';
-    root.dataset.lang = lang;
-    document.title = ui('title');
-    $$('[data-i18n]').forEach((el) => (el.textContent = ui(el.dataset.i18n)));
-    $$('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', ui(el.dataset.i18nAria)));
-    renderFacts();
-    renderExperience();
-    renderHobbies();
-    renderContact();
-    if (modalIndex !== null) fillModal(modalIndex);
-  }
-
-  function switchLang(next) {
-    if (next === lang) return;
-    try {
-      localStorage.setItem(LANG_KEY, next);
-    } catch (_) {}
-    const swap = () => {
-      lang = next;
-      applyLang();
-      $$('.reveal').forEach((el) => el.classList.add('in'));
-      updateFacts();
-    };
-    if (reduceMotion) return swap();
-    document.body.classList.add('lang-switching');
-    setTimeout(() => {
-      swap();
-      requestAnimationFrame(() => document.body.classList.remove('lang-switching'));
-    }, 220);
-  }
-
-  $('.lang-toggle').addEventListener('click', (e) => {
-    const opt = e.target.closest('.lang-opt');
-    switchLang(opt ? opt.dataset.lang : lang === 'zh' ? 'en' : 'zh');
-  });
-
   /* ---------------- rendering ---------------- */
 
   function renderFacts() {
     $('#facts').innerHTML = SITE.facts
       .map((f) => {
         const value = f.href
-          ? `<a href="${f.href}" target="_blank" rel="noopener">${esc(t(f.v))}<span class="fact-arrow">${svg(ICONS.arrow, 28)}</span></a>`
-          : t(f.v)
+          ? `<a href="${f.href}" target="_blank" rel="noopener">${esc(f.v)}<span class="fact-arrow">${svg(ICONS.arrow, 28)}</span></a>`
+          : f.v
               .split(' · ')
               .map((seg) => `<span class="seg">${esc(seg)}</span>`)
               .join(' · ');
-        return `<div class="fact"><dt>${esc(t(f.k))}</dt><dd>${value}</dd></div>`;
+        return `<div class="fact"><dt>${esc(f.k)}</dt><dd>${value}</dd></div>`;
       })
       .join('');
   }
@@ -94,11 +42,11 @@
         <button type="button" class="exp-card reveal" data-index="${i}" style="--d:${(i % 2) * 0.08}s">
           <span class="exp-media">
             <img src="${e.image}" alt="" loading="lazy" decoding="async" />
-            <span class="exp-date">${esc(t(e.when))}</span>
+            <span class="exp-date">${esc(e.when)}</span>
           </span>
           <span class="exp-body">
-            <h3 class="exp-title">${esc(t(e.title))}</h3>
-            <p class="exp-role">${esc(t(e.role))}</p>
+            <h3 class="exp-title">${esc(e.title)}</h3>
+            <p class="exp-role">${esc(e.role)}</p>
           </span>
         </button>`
       )
@@ -115,10 +63,10 @@
       .map(
         (h, i) => `
         <figure class="hobby reveal" id="hobby-${h.id}" style="--d:${i * 0.08}s">
-          <div class="hobby-media"><img src="${h.image}" alt="${esc(t(h.alt))}" loading="lazy" decoding="async" /></div>
+          <div class="hobby-media"><img src="${h.image}" alt="${esc(h.alt)}" loading="lazy" decoding="async" /></div>
           <figcaption>
-            <h3>${esc(t(h.name))}</h3>
-            ${h.desc ? `<p>${esc(t(h.desc))}</p>` : ''}
+            <h3>${esc(h.name)}</h3>
+            ${h.desc ? `<p>${esc(h.desc)}</p>` : ''}
           </figcaption>
         </figure>`
       )
@@ -149,11 +97,11 @@
             <span class="contact-icon">${svg(ICONS[c.icon])}</span>
             <span class="contact-arrow">${svg(ICONS.arrow, 18)}</span>
             <span class="contact-text">
-              <span class="contact-label">${esc(t(c.label))}</span>
+              <span class="contact-label">${esc(c.label)}</span>
               <span class="contact-value">${esc(c.value)}</span>
             </span>
           </a>
-          ${c.copy ? `<button type="button" class="copy-btn" data-copy="${esc(c.value)}">${esc(ui('label.copy'))}</button>` : ''}
+          ${c.copy ? `<button type="button" class="copy-btn" data-copy="${esc(c.value)}">Copy</button>` : ''}
         </li>`;
       })
       .join('');
@@ -189,22 +137,22 @@
   function fillModal(i) {
     const e = SITE.experience[i];
     $('#modal-img').src = e.image;
-    const meta = e.meta.map((m) => `<div><dt>${esc(t(m.k))}</dt><dd>${esc(t(m.v))}</dd></div>`).join('');
+    const meta = e.meta.map((m) => `<div><dt>${esc(m.k)}</dt><dd>${esc(m.v)}</dd></div>`).join('');
     const sessions = (e.sessions || [])
       .map(
         (s) => `
         <li>
-          <span class="s-when">${esc(t(s.when))}</span>
-          <span class="s-name">${esc(t(s.name))}</span>
-          <span class="s-where">${esc(t(s.where))}</span>
+          <span class="s-when">${esc(s.when)}</span>
+          <span class="s-name">${esc(s.name)}</span>
+          <span class="s-where">${esc(s.where)}</span>
         </li>`
       )
       .join('');
     $('#modal-body').innerHTML = `
-      <div class="modal-kicker"><span class="pill dark">${esc(t(e.role))}</span><span class="pill">${esc(t(e.when))}</span></div>
-      <h3 id="modal-title">${esc(t(e.title))}</h3>
+      <div class="modal-kicker"><span class="pill dark">${esc(e.role)}</span><span class="pill">${esc(e.when)}</span></div>
+      <h3 id="modal-title">${esc(e.title)}</h3>
       <dl class="modal-meta">${meta}</dl>
-      ${sessions ? `<p class="modal-list-title">${esc(t(e.listTitle))}</p><ol class="modal-sessions">${sessions}</ol>` : ''}`;
+      ${sessions ? `<p class="modal-list-title">${esc(e.listTitle)}</p><ol class="modal-sessions">${sessions}</ol>` : ''}`;
     $('#modal-count').textContent = `${String(i + 1).padStart(2, '0')} / ${String(SITE.experience.length).padStart(2, '0')}`;
   }
 
@@ -301,12 +249,12 @@
       document.execCommand('copy');
       ta.remove();
     }
-    showToast(ui('label.copied'));
+    showToast('Email copied');
     btn.classList.add('done');
     btn.textContent = '✓';
     setTimeout(() => {
       btn.classList.remove('done');
-      btn.textContent = ui('label.copy');
+      btn.textContent = 'Copy';
     }, 1600);
   }
 
@@ -506,7 +454,10 @@
 
   /* ---------------- boot ---------------- */
 
-  applyLang();
+  renderFacts();
+  renderExperience();
+  renderHobbies();
+  renderContact();
   $$('.reveal:not(.in)').forEach((el) => (revealIO ? revealIO.observe(el) : el.classList.add('in')));
   wordmark();
   field();
